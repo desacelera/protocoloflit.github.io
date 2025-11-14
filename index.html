@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Corpo dos Sonhos – Ebook Transformador</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--rose-deep: #b95346;
+			--rose-soft: #f4b7a1;
+			--blush: #fbd5c1;
+			--sun: #f0a25e;
+			--sand: #f3e8dc;
+			--leaf: #7b5f4c;
+			--night: #1e1714;
+			--text-dark: #40241e;
+			--card-frost: rgba(255, 255, 255, 0.08);
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Poppins', sans-serif;
+			color: var(--sand);
+			background: linear-gradient(135deg, #3f2520 0%, #5e2d28 35%, #a45545 70%, #fdd8c3 100%);
+			min-height: 100vh;
+			line-height: 1.7;
+			overflow-x: hidden;
+		}
+
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			background: radial-gradient(circle at 25% 10%, rgba(255, 255, 255, 0.35), transparent 60%),
+				radial-gradient(circle at 75% 0%, rgba(255, 255, 255, 0.2), transparent 55%);
+			mix-blend-mode: screen;
+			pointer-events: none;
+			z-index: -2;
+			animation: pulse 16s ease-in-out infinite alternate;
+		}
+
+		main {
+			position: relative;
+		}
+
+		section {
+			width: min(1200px, 92vw);
+			margin: 0 auto;
+			padding: 5rem 0;
+		}
+
+		header.hero {
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			text-align: center;
+			padding: 6rem 0 4rem;
+			position: relative;
+			overflow: hidden;
+		}
+
+		header.hero::before {
+			content: "";
+			position: absolute;
+			width: 900px;
+			height: 900px;
+			background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+			top: -20%;
+			left: 50%;
+			transform: translateX(-50%);
+			opacity: 0.4;
+			z-index: -1;
+			animation: sunPulse 20s ease-in-out infinite alternate;
+		}
+
+
+		.hero-split {
+			margin-top: 3rem;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 2.5rem;
+			align-items: stretch;
+		}
+
+		.hero-visual {
+			border-radius: 32px;
+			padding: 1.5rem;
+			background: rgba(0, 0, 0, 0.25);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			box-shadow: 0 25px 70px rgba(9, 5, 4, 0.5);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero-visual::after {
+			content: "";
+			position: absolute;
+			inset: 16px;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			border-radius: 24px;
+			pointer-events: none;
+		}
+
+		.hero-visual img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 20px;
+			transition: transform 1.2s cubic-bezier(.2,.9,.3,1);
+		}
+
+		.hero-visual:hover img,
+		.hero-visual:focus-within img {
+			transform: scale(1.04);
+		}
+
+		@media (max-width: 900px) {
+			.hero-split {
+				grid-template-columns: 1fr;
+			}
+			.hero-visual {
+				order: -1;
+			}
+		}
+
+		.hero-text h1 {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(2.5rem, 6vw, 4.8rem);
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: #fff;
+			text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+		}
+
+		.hero-text p {
+			margin: 1.5rem auto 2.5rem;
+			width: min(650px, 90vw);
+			font-size: 1.1rem;
+			color: rgba(255, 255, 255, 0.85);
+		}
+
+		.cta-group {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1rem;
+		}
+
+		.btn {
+			border: none;
+			padding: 0.95rem 2.8rem;
+			border-radius: 999px;
+			font-weight: 600;
+			font-size: 1rem;
+			cursor: pointer;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.btn-primary {
+			background: linear-gradient(120deg, var(--sun), var(--rose-soft));
+			color: var(--night);
+			box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+		}
+
+		.btn-secondary {
+			background: transparent;
+			color: #fff;
+			border: 1px solid rgba(255, 255, 255, 0.5);
+		}
+
+		.btn:hover {
+			transform: translateY(-4px) scale(1.01);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+		}
+
+		.badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			font-size: 0.9rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			background: rgba(0, 0, 0, 0.25);
+			padding: 0.65rem 1.2rem;
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.25);
+		}
+
+		.floating-orb {
+			position: absolute;
+			width: 180px;
+			height: 180px;
+			border-radius: 50%;
+			background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+			filter: blur(0.5px);
+			animation: float 18s ease-in-out infinite;
+			z-index: -1;
+		}
+
+		.floating-orb:nth-child(1) {
+			top: 10%;
+			left: 8%;
+		}
+
+		.floating-orb:nth-child(2) {
+			bottom: 5%;
+			right: 12%;
+			animation-delay: 4s;
+		}
+
+		.floating-orb:nth-child(3) {
+			bottom: 15%;
+			left: 15%;
+			animation-delay: 8s;
+		}
+
+		.panel {
+			background: rgba(19, 12, 10, 0.55);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: 28px;
+			padding: 2.5rem;
+			backdrop-filter: blur(22px);
+			box-shadow: 0 25px 70px rgba(9, 5, 4, 0.65);
+		}
+
+		.panel h2 {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(2rem, 4vw, 3rem);
+			color: #fff4ec;
+			margin-bottom: 0.6rem;
+		}
+
+		.panel p {
+			color: rgba(255, 245, 240, 0.8);
+		}
+
+		.card-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 1.5rem;
+			margin-top: 2.5rem;
+		}
+
+		.feature-card {
+			padding: 1.5rem;
+			border-radius: 24px;
+			background: rgba(255, 255, 255, 0.08);
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			min-height: 180px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.feature-card::after {
+			content: "";
+			position: absolute;
+			inset: 3px;
+			border-radius: 20px;
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			pointer-events: none;
+		}
+
+		.feature-card h3 {
+			color: var(--blush);
+			font-size: 1.1rem;
+			margin-bottom: 0.8rem;
+		}
+
+		.intro-topics {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 1.2rem;
+			margin-top: 2rem;
+		}
+
+		.intro-topics li {
+			list-style: none;
+			padding: 1.1rem 1.2rem;
+			border-radius: 18px;
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			color: var(--sand);
+		}
+
+		.chapters {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 2rem;
+		}
+
+		.chapter-card {
+			padding: 2rem;
+			border-radius: 28px;
+			background: rgba(255, 255, 255, 0.08);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.chapter-card h3 {
+			margin-bottom: 1rem;
+			font-size: 1.4rem;
+			color: var(--blush);
+		}
+
+		.chapter-card ul {
+			padding-left: 1.2rem;
+			color: rgba(255, 255, 255, 0.85);
+		}
+
+		.chapter-card ul li + li {
+			margin-top: 0.5rem;
+		}
+
+		.timeline {
+			margin-top: 3rem;
+			padding: 3rem;
+			border-radius: 30px;
+			background: rgba(255, 255, 255, 0.07);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.timeline-steps {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 1.5rem;
+		}
+
+		.timeline-step {
+			padding: 1.25rem;
+			border-radius: 22px;
+			background: rgba(0, 0, 0, 0.25);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			text-align: center;
+			transition: transform 0.4s ease, border-color 0.4s ease;
+		}
+
+		.timeline-step.active {
+			border-color: var(--sun);
+			transform: translateY(-6px) scale(1.02);
+			box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25);
+		}
+
+		.timeline-step strong {
+			display: block;
+			margin-bottom: 0.5rem;
+			letter-spacing: 0.08em;
+			color: var(--blush);
+		}
+
+		.bonuses {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 1.5rem;
+			margin-top: 2rem;
+		}
+
+		.bonus-card {
+			padding: 1.8rem;
+			background: rgba(255, 255, 255, 0.08);
+			border-radius: 24px;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+		}
+
+		.bonus-card h4 {
+			margin-bottom: 0.6rem;
+			color: var(--sun);
+		}
+
+		.cta-panel {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 2rem;
+			align-items: center;
+			background: rgba(0, 0, 0, 0.35);
+			border-radius: 30px;
+			padding: 3rem;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 0.8rem;
+		}
+
+		input, textarea {
+			border-radius: 18px;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			background: rgba(255, 255, 255, 0.1);
+			padding: 1rem 1.2rem;
+			color: #fff;
+			font-size: 1rem;
+		}
+
+		input::placeholder, textarea::placeholder {
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem 1rem 3rem;
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		.reveal {
+			opacity: 0;
+			transform: translateY(40px);
+			transition: opacity 0.8s ease, transform 0.8s ease;
+		}
+
+		.reveal.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		@keyframes float {
+			0% {
+				transform: translateY(0px) scale(1);
+			}
+
+			50% {
+				transform: translateY(-30px) scale(1.05);
+			}
+
+			100% {
+				transform: translateY(0px) scale(1);
+			}
+		}
+
+		@keyframes pulse {
+			from {
+				opacity: 0.5;
+			}
+
+			to {
+				opacity: 0.9;
+			}
+		}
+
+		@keyframes sunPulse {
+			from {
+				opacity: 0.2;
+				transform: translateX(-50%) scale(0.9);
+			}
+
+			to {
+				opacity: 0.55;
+				transform: translateX(-50%) scale(1.1);
+			}
+		}
+
+		@media (max-width: 640px) {
+			.hero-text h1 {
+				letter-spacing: 0.03em;
+			}
+
+			.panel {
+				padding: 1.8rem;
+			}
+
+			.timeline {
+				padding: 2rem;
+			}
+
+			.btn {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="floating-orb"></div>
+	<div class="floating-orb"></div>
+	<div class="floating-orb"></div>
+
+	<header class="hero">
+		<main>
+			<div class="hero-text reveal" style="position:relative;z-index:1;">
+				<span class="badge">Ebook premium • Edição Ano Novo</span>
+				<h1>Conquiste seu corpo ideal antes do Ano Novo</h1>
+				<p>Uma jornada calorosa, baseada em autocompaixão e estratégia, para você construir hábitos reais e celebrar
+					um corpo saudável com presença, consciência e prazer em 30 dias.</p>
+				<div class="cta-group">
+					<button class="btn btn-primary" data-scroll="#capitulos">Quero meu plano</button>
+					<button class="btn btn-secondary" data-scroll="#introducao">Ver conteúdo completo</button>
+				</div>
+			</div>
+			<div class="hero-split reveal">
+				<section class="panel" aria-label="Destaques do programa">
+					<h2>Uma metodologia que abraça mente, coração e prato</h2>
+					<p>Inspirada pelo nascer de um novo ciclo, a experiência une visualização criativa, nutrição estratégica e um pacto de 30 dias para você sentir resultados duradouros.</p>
+					<div class="card-grid">
+						<article class="feature-card">
+							<h3>Autocompaixão ativa</h3>
+							<p>Protocolos de journaling e mindfulness para transformar culpa em combustível gentil.</p>
+						</article>
+						<article class="feature-card">
+							<h3>Nutrição inteligente</h3>
+							<p>Guias práticos sobre alimentos funcionais, proteínas e carboidratos que aceleram o metabolismo.</p>
+						</article>
+						<article class="feature-card">
+							<h3>Visualização guiada</h3>
+							<p>Exercícios diários para você ver o corpo dos sonhos e trazer essa realidade para o agora.</p>
+						</article>
+						<article class="feature-card">
+							<h3>Pacto de 30 dias</h3>
+							<p>Calendário editável, lembretes e check-ins semanais para acompanhar cada micro vitória.</p>
+						</article>
+					</div>
+				</section>
+				<figure class="hero-visual" aria-label="Ilustração inspiradora">
+					<img src="assets/hero-art.jpg" alt="Mulher celebrando o corpo ideal" loading="lazy">
+				</figure>
+			</div>
+		</main>
+	</header>
+
+	<section id="introducao" class="reveal">
+		<div class="panel">
+			<h2>Introdução – Um Ano Novo Transformador</h2>
+			<p>Descubra por que a autocompaixão é a centelha que permite consistência. Explore visualizações que despertam emoções positivas e estabeleça um compromisso verdadeiro consigo.</p>
+			<ul class="intro-topics">
+				<li>A importância da autocompaixão na jornada de emagrecimento.</li>
+				<li>Visualização criativa: imagine o sucesso e torne-o realidade.</li>
+				<li>Comprometimento consigo mesma: o pacto de 30 dias.</li>
+				<li>Ferramentas para transformar recaídas em aprendizados.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="capitulos" class="reveal">
+		<div class="panel">
+			<h2>O que você vai dominar</h2>
+			<div class="chapters">
+				<article class="chapter-card">
+					<h3>Capítulo 1 • Mentalidade de Sucesso</h3>
+					<ul>
+						<li>Preparando a mente antes de qualquer plano alimentar.</li>
+						<li>Reprogramando crenças limitantes e soltando o que pesa.</li>
+						<li>Visualização criativa para desenhar o corpo dos seus sonhos.</li>
+						<li>Mindfulness e alimentação consciente: o poder do aqui e agora.</li>
+					</ul>
+				</article>
+				<article class="chapter-card">
+					<h3>Capítulo 2 • Nutrição Estratégica</h3>
+					<ul>
+						<li>Compreenda o poder dos alimentos e as combinações ideais.</li>
+						<li>Alimentos funcionais para potencializar o corpo com nutrientes essenciais.</li>
+						<li>O papel das proteínas na perda de peso e na saciedade.</li>
+						<li>Carboidratos inteligentes: quando e como consumir para acelerar o metabolismo.</li>
+						<li>Planilhas extras com ideias express e muito mais.</li>
+					</ul>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="reveal">
+		<div class="timeline" aria-label="Pacto de 30 dias">
+			<h2>O Pacto de 30 Dias</h2>
+			<p>Um roteiro suave e firme: cada semana traz um novo foco, novas visualizações e ajustes de nutrição para que o processo seja prazeroso.</p>
+			<div class="timeline-steps">
+				<div class="timeline-step" data-step="1">
+					<strong>Semana 1</strong>
+					Autocompaixão ativa + diários conscientes.
+				</div>
+				<div class="timeline-step" data-step="2">
+					<strong>Semana 2</strong>
+					Visualização + planejamento de refeições.
+				</div>
+				<div class="timeline-step" data-step="3">
+					<strong>Semana 3</strong>
+					Otimizando macronutrientes e energia.
+				</div>
+				<div class="timeline-step" data-step="4">
+					<strong>Semana 4</strong>
+					Integração, celebração e manutenção.
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="reveal">
+		<div class="panel">
+			<h2>Extras e bônus</h2>
+			<div class="bonuses">
+				<article class="bonus-card">
+					<h4>Calendário guiado</h4>
+					<p>Checklist digital com lembretes automáticos para acompanhar cada micro hábito.</p>
+				</article>
+				<article class="bonus-card">
+					<h4>Meditações guiadas</h4>
+					<p>Áudios curtos para sintonizar com o corpo ideal antes de cada refeição.</p>
+				</article>
+				<article class="bonus-card">
+					<h4>Receitas funcionais</h4>
+					<p>Livro rápido com opções ricas em proteína e carboidratos inteligentes.</p>
+				</article>
+				<article class="bonus-card">
+					<h4>Planilha de progresso</h4>
+					<p>Espaço editável para métricas amorosas e registro de conquistas semanais.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="reveal">
+		<div class="cta-panel">
+			<div>
+				<h2>Transforme sua próxima estação</h2>
+				<p>Receba o ebook instantaneamente, junto com acesso aos bônus e às atualizações sazonais. Este é o convite para celebrar um corpo saudável com alegria.</p>
+				<ul style="margin-top:1rem;list-style:none;color:rgba(255,255,255,0.8);">
+					<li>✔ Atualizações gratuitas por 12 meses</li>
+					<li>✔ Garantia de 7 dias</li>
+					<li>✔ Comunidade exclusiva para trocas semanais</li>
+				</ul>
+			</div>
+			<form>
+				<label for="nome">Nome</label>
+				<input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+				<label for="email">E-mail</label>
+				<input type="email" id="email" name="email" placeholder="voce@email.com" required>
+				<label for="objetivo">Qual é seu objetivo para os próximos 30 dias?</label>
+				<textarea id="objetivo" rows="3" placeholder="Compartilhe seu foco principal"></textarea>
+				<button type="submit" class="btn btn-primary">Garantir meu acesso</button>
+			</form>
+		</div>
+	</section>
+
+	<footer>
+		corpo dos sonhos • Ebook digital • 2025
+	</footer>
+
+	<script>
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-visible');
+				}
+			});
+		}, { threshold: 0.2 });
+
+		document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+		document.querySelectorAll('[data-scroll]').forEach(button => {
+			button.addEventListener('click', (event) => {
+				const target = document.querySelector(button.getAttribute('data-scroll'));
+				if (!target) return;
+				event.preventDefault();
+				target.scrollIntoView({ behavior: 'smooth' });
+			});
+		});
+
+		const steps = document.querySelectorAll('.timeline-step');
+		let currentStep = 0;
+		setInterval(() => {
+			steps.forEach(step => step.classList.remove('active'));
+			steps[currentStep].classList.add('active');
+			currentStep = (currentStep + 1) % steps.length;
+		}, 4000);
+
+		const form = document.querySelector('form');
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			form.reset();
+			alert('Obrigada! Seu acesso será enviado em instantes.');
+		});
+	</script>
+</body>
+
+</html>

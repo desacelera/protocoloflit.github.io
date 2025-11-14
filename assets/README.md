@@ -1,0 +1,1 @@
+Place the hero image file here and name it `hero-art.jpg` (recommended size ~2000x3000 px; keep it compressed). The landing page expects the artwork at `assets/hero-art.jpg`. If you prefer another name, update `index.html` accordingly.
